@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Clang-Release|Win32">
+      <Configuration>Clang-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Clang|Win32">
+      <Configuration>Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="GCC-Release|Win32">
+      <Configuration>GCC-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="GCC|Win32">
+      <Configuration>GCC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}</ProjectGuid>
+    <RootNamespace>PrettyOS</RootNamespace>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'">
+    <NMakeBuildCommandLine>cd ..
+build.bat -release</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..
+rebuild.bat -release</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..
+clean.bat</NMakeCleanCommandLine>
+    <NMakeOutput />
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\kernel</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\kernel</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'">
+    <NMakeBuildCommandLine>cd ..
+build.bat -release -clang -vs</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..
+rebuild.bat -release -clang -vs</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..
+clean.bat</NMakeCleanCommandLine>
+    <NMakeOutput />
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\kernel</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\kernel</SourcePath>
+    <NMakePreprocessorDefinitions>__clang__</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'">
+    <NMakeBuildCommandLine>cd ..
+build.bat</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..
+rebuild.bat</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..
+clean.bat</NMakeCleanCommandLine>
+    <NMakeOutput />
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\kernel</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\kernel</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'">
+    <NMakeBuildCommandLine>cd ..
+build.bat -clang -vs</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..
+rebuild.bat -clang -vs</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..
+clean.bat</NMakeCleanCommandLine>
+    <NMakeOutput />
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\kernel</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..</SourcePath>
+    <NMakePreprocessorDefinitions>__clang__</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\kernel\data.asm" />
+    <None Include="..\kernel\flush.asm" />
+    <None Include="..\kernel\interrupts.asm" />
+    <None Include="..\kernel\kernel.asm" />
+    <None Include="..\kernel\kernel.ld" />
+    <None Include="..\makefile" />
+    <None Include="..\stage1_bootloader\boot.asm" />
+    <None Include="..\stage1_bootloader\Fat12_BPB.inc" />
+    <None Include="..\stage2_bootloader\A20.inc" />
+    <None Include="..\stage2_bootloader\boot2.asm" />
+    <None Include="..\stage2_bootloader\Fat12.inc" />
+    <None Include="..\stage2_bootloader\gdt.inc" />
+    <None Include="..\stage2_bootloader\GetMemoryMap.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\kernel\acpi\acpi.h" />
+    <ClInclude Include="..\kernel\acpi\fadt.h" />
+    <ClInclude Include="..\kernel\acpi\madt.h" />
+    <ClInclude Include="..\kernel\acpi\parser.h" />
+    <ClInclude Include="..\kernel\apic.h" />
+    <ClInclude Include="..\kernel\audio\ac97_intel.h" />
+    <ClInclude Include="..\kernel\audio\ac97_via.h" />
+    <ClInclude Include="..\kernel\audio\audio.h" />
+    <ClInclude Include="..\kernel\audio\sb16.h" />
+    <ClInclude Include="..\kernel\audio\sys_speaker.h" />
+    <ClInclude Include="..\kernel\audio\wav.h" />
+    <ClInclude Include="..\kernel\cdi-osdep.h" />
+    <ClInclude Include="..\kernel\cdi.h" />
+    <ClInclude Include="..\kernel\cdi\audio.h" />
+    <ClInclude Include="..\kernel\cdi\bios.h" />
+    <ClInclude Include="..\kernel\cdi\cache.h" />
+    <ClInclude Include="..\kernel\cdi\cmos.h" />
+    <ClInclude Include="..\kernel\cdi\dma.h" />
+    <ClInclude Include="..\kernel\cdi\fs.h" />
+    <ClInclude Include="..\kernel\cdi\io.h" />
+    <ClInclude Include="..\kernel\cdi\lists.h" />
+    <ClInclude Include="..\kernel\cdi\mem.h" />
+    <ClInclude Include="..\kernel\cdi\mempool.h" />
+    <ClInclude Include="..\kernel\cdi\misc.h" />
+    <ClInclude Include="..\kernel\cdi\net.h" />
+    <ClInclude Include="..\kernel\cdi\pci.h" />
+    <ClInclude Include="..\kernel\cdi\scsi.h" />
+    <ClInclude Include="..\kernel\cdi\storage.h" />
+    <ClInclude Include="..\kernel\cdi\usb-structures.h" />
+    <ClInclude Include="..\kernel\cdi\usb.h" />
+    <ClInclude Include="..\kernel\cdi\usb_hcd.h" />
+    <ClInclude Include="..\kernel\cmos.h" />
+    <ClInclude Include="..\kernel\cpu.h" />
+    <ClInclude Include="..\kernel\descriptor_tables.h" />
+    <ClInclude Include="..\kernel\dma.h" />
+    <ClInclude Include="..\kernel\elf.h" />
+    <ClInclude Include="..\kernel\events.h" />
+    <ClInclude Include="..\kernel\executable.h" />
+    <ClInclude Include="..\kernel\filesystem\fat.h" />
+    <ClInclude Include="..\kernel\filesystem\fat12.h" />
+    <ClInclude Include="..\kernel\filesystem\fsmanager.h" />
+    <ClInclude Include="..\kernel\filesystem\ramdisk.h" />
+    <ClInclude Include="..\kernel\hid\keyboard.h" />
+    <ClInclude Include="..\kernel\hid\keyboard_GER.h" />
+    <ClInclude Include="..\kernel\hid\keyboard_US.h" />
+    <ClInclude Include="..\kernel\hid\mouse.h" />
+    <ClInclude Include="..\kernel\hid\usb_hid.h" />
+    <ClInclude Include="..\kernel\ipc.h" />
+    <ClInclude Include="..\kernel\irq.h" />
+    <ClInclude Include="..\kernel\kheap.h" />
+    <ClInclude Include="..\kernel\log.h" />
+    <ClInclude Include="..\kernel\memory.h" />
+    <ClInclude Include="..\kernel\netprotocol\arp.h" />
+    <ClInclude Include="..\kernel\netprotocol\dhcp.h" />
+    <ClInclude Include="..\kernel\netprotocol\icmp.h" />
+    <ClInclude Include="..\kernel\netprotocol\ethernet.h" />
+    <ClInclude Include="..\kernel\netprotocol\ipv4.h" />
+    <ClInclude Include="..\kernel\netprotocol\ipv6.h" />
+    <ClInclude Include="..\kernel\netprotocol\tcp.h" />
+    <ClInclude Include="..\kernel\netprotocol\udp.h" />
+    <ClInclude Include="..\kernel\network\e1000.h" />
+    <ClInclude Include="..\kernel\network\e1000_io.h" />
+    <ClInclude Include="..\kernel\network\netutils.h" />
+    <ClInclude Include="..\kernel\network\network.h" />
+    <ClInclude Include="..\kernel\network\pcnet.h" />
+    <ClInclude Include="..\kernel\network\rtl8139.h" />
+    <ClInclude Include="..\kernel\network\rtl8168.h" />
+    <ClInclude Include="..\kernel\os.h" />
+    <ClInclude Include="..\kernel\paging.h" />
+    <ClInclude Include="..\kernel\pci.h" />
+    <ClInclude Include="..\kernel\pe.h" />
+    <ClInclude Include="..\kernel\pit.h" />
+    <ClInclude Include="..\kernel\power_management.h" />
+    <ClInclude Include="..\kernel\serial.h" />
+    <ClInclude Include="..\kernel\storage\ata.h" />
+    <ClInclude Include="..\kernel\storage\devicemanager.h" />
+    <ClInclude Include="..\kernel\storage\flpydsk.h" />
+    <ClInclude Include="..\kernel\storage\hdd.h" />
+    <ClInclude Include="..\kernel\storage\usb_msd.h" />
+    <ClInclude Include="..\kernel\syscall.h" />
+    <ClInclude Include="..\kernel\tasking\scheduler.h" />
+    <ClInclude Include="..\kernel\tasking\synchronisation.h" />
+    <ClInclude Include="..\kernel\tasking\task.h" />
+    <ClInclude Include="..\kernel\tasking\vm86.h" />
+    <ClInclude Include="..\kernel\time.h" />
+    <ClInclude Include="..\kernel\timer.h" />
+    <ClInclude Include="..\kernel\usb\ehci.h" />
+    <ClInclude Include="..\kernel\usb\ehciQHqTD.h" />
+    <ClInclude Include="..\kernel\usb\ohci.h" />
+    <ClInclude Include="..\kernel\usb\uhci.h" />
+    <ClInclude Include="..\kernel\usb\usb.h" />
+    <ClInclude Include="..\kernel\usb\usb_hc.h" />
+    <ClInclude Include="..\kernel\usb\usb_hub.h" />
+    <ClInclude Include="..\kernel\usb\xhci.h" />
+    <ClInclude Include="..\kernel\userheap.h" />
+    <ClInclude Include="..\kernel\util\array.h" />
+    <ClInclude Include="..\kernel\util\list.h" />
+    <ClInclude Include="..\kernel\util\ring.h" />
+    <ClInclude Include="..\kernel\util\todo_list.h" />
+    <ClInclude Include="..\kernel\util\types.h" />
+    <ClInclude Include="..\kernel\util\util.h" />
+    <ClInclude Include="..\kernel\video\console.h" />
+    <ClInclude Include="..\kernel\video\font.h" />
+    <ClInclude Include="..\kernel\video\gui.h" />
+    <ClInclude Include="..\kernel\video\gui_button.h" />
+    <ClInclude Include="..\kernel\video\gui_window.h" />
+    <ClInclude Include="..\kernel\video\usb_video.h" />
+    <ClInclude Include="..\kernel\video\vbe.h" />
+    <ClInclude Include="..\kernel\video\video.h" />
+    <ClInclude Include="..\kernel\video\videomanager.h" />
+    <ClInclude Include="..\kernel\video\videoutils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\kernel\acpi\acpi.c" />
+    <ClCompile Include="..\kernel\acpi\fadt.c" />
+    <ClCompile Include="..\kernel\acpi\madt.c" />
+    <ClCompile Include="..\kernel\acpi\parser.c" />
+    <ClCompile Include="..\kernel\apic.c" />
+    <ClCompile Include="..\kernel\audio\ac97_intel.c" />
+    <ClCompile Include="..\kernel\audio\ac97_via.c" />
+    <ClCompile Include="..\kernel\audio\audio.c" />
+    <ClCompile Include="..\kernel\audio\sb16.c" />
+    <ClCompile Include="..\kernel\audio\sys_speaker.c" />
+    <ClCompile Include="..\kernel\audio\wav.c" />
+    <ClCompile Include="..\kernel\cdi\cdi.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_audio.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_bios.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_cache.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_dma.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_fs.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_lists.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_mem.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_mempool.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_misc.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_net.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_pci.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_scsi.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_storage.c" />
+    <ClCompile Include="..\kernel\cdi\cdi_usb.c" />
+    <ClCompile Include="..\kernel\ckernel.c" />
+    <ClCompile Include="..\kernel\cmos.c" />
+    <ClCompile Include="..\kernel\cpu.c" />
+    <ClCompile Include="..\kernel\descriptor_tables.c" />
+    <ClCompile Include="..\kernel\dma.c" />
+    <ClCompile Include="..\kernel\elf.c" />
+    <ClCompile Include="..\kernel\events.c" />
+    <ClCompile Include="..\kernel\executable.c" />
+    <ClCompile Include="..\kernel\filesystem\fat.c" />
+    <ClCompile Include="..\kernel\filesystem\fat12.c" />
+    <ClCompile Include="..\kernel\filesystem\fsmanager.c" />
+    <ClCompile Include="..\kernel\filesystem\ramdisk.c" />
+    <ClCompile Include="..\kernel\hid\keyboard.c" />
+    <ClCompile Include="..\kernel\hid\mouse.c" />
+    <ClCompile Include="..\kernel\hid\usb_hid.c" />
+    <ClCompile Include="..\kernel\ipc.c" />
+    <ClCompile Include="..\kernel\irq.c" />
+    <ClCompile Include="..\kernel\kheap.c" />
+    <ClCompile Include="..\kernel\log.c" />
+    <ClCompile Include="..\kernel\netprotocol\arp.c" />
+    <ClCompile Include="..\kernel\netprotocol\dhcp.c" />
+    <ClCompile Include="..\kernel\netprotocol\icmp.c" />
+    <ClCompile Include="..\kernel\netprotocol\ethernet.c" />
+    <ClCompile Include="..\kernel\netprotocol\ipv4.c" />
+    <ClCompile Include="..\kernel\netprotocol\ipv6.c" />
+    <ClCompile Include="..\kernel\netprotocol\tcp.c" />
+    <ClCompile Include="..\kernel\netprotocol\udp.c" />
+    <ClCompile Include="..\kernel\network\e1000.c" />
+    <ClCompile Include="..\kernel\network\e1000_cdi.c" />
+    <ClCompile Include="..\kernel\network\netutils.c" />
+    <ClCompile Include="..\kernel\network\network.c" />
+    <ClCompile Include="..\kernel\network\pcnet.c" />
+    <ClCompile Include="..\kernel\network\rtl8139.c" />
+    <ClCompile Include="..\kernel\network\rtl8168.c" />
+    <ClCompile Include="..\kernel\paging.c" />
+    <ClCompile Include="..\kernel\pci.c" />
+    <ClCompile Include="..\kernel\pe.c" />
+    <ClCompile Include="..\kernel\power_management.c" />
+    <ClCompile Include="..\kernel\serial.c" />
+    <ClCompile Include="..\kernel\storage\ata.c" />
+    <ClCompile Include="..\kernel\storage\devicemanager.c" />
+    <ClCompile Include="..\kernel\storage\flpydsk.c" />
+    <ClCompile Include="..\kernel\storage\hdd.c" />
+    <ClCompile Include="..\kernel\storage\usb_msd.c" />
+    <ClCompile Include="..\kernel\syscall.c" />
+    <ClCompile Include="..\kernel\tasking\scheduler.c" />
+    <ClCompile Include="..\kernel\tasking\synchronisation.c" />
+    <ClCompile Include="..\kernel\tasking\task.c" />
+    <ClCompile Include="..\kernel\tasking\vm86.c" />
+    <ClCompile Include="..\kernel\time.c" />
+    <ClCompile Include="..\kernel\timer.c" />
+    <ClCompile Include="..\kernel\usb\ehci.c" />
+    <ClCompile Include="..\kernel\usb\ehciQHqTD.c" />
+    <ClCompile Include="..\kernel\usb\ohci.c" />
+    <ClCompile Include="..\kernel\usb\uhci.c" />
+    <ClCompile Include="..\kernel\usb\usb.c" />
+    <ClCompile Include="..\kernel\usb\usb_hc.c" />
+    <ClCompile Include="..\kernel\usb\usb_hub.c" />
+    <ClCompile Include="..\kernel\usb\xhci.c" />
+    <ClCompile Include="..\kernel\userheap.c" />
+    <ClCompile Include="..\kernel\util\array.c" />
+    <ClCompile Include="..\kernel\util\list.c" />
+    <ClCompile Include="..\kernel\util\ring.c" />
+    <ClCompile Include="..\kernel\util\todo_list.c" />
+    <ClCompile Include="..\kernel\util\util.c" />
+    <ClCompile Include="..\kernel\video\console.c" />
+    <ClCompile Include="..\kernel\video\gui.c" />
+    <ClCompile Include="..\kernel\video\gui_button.c" />
+    <ClCompile Include="..\kernel\video\gui_window.c" />
+    <ClCompile Include="..\kernel\video\usb_video.c" />
+    <ClCompile Include="..\kernel\video\vbe.c" />
+    <ClCompile Include="..\kernel\video\video.c" />
+    <ClCompile Include="..\kernel\video\videomanager.c" />
+    <ClCompile Include="..\kernel\video\videoutils.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

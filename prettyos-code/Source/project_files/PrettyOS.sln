@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PrettyOS", "PrettyOS.vcxproj", "{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Userspace", "Userspace.vcxproj", "{D153E847-23E9-49A7-845E-570F18D1FA40}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB} = {8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		GCC|Win32 = GCC|Win32
+		Clang|Win32 = Clang|Win32
+		GCC-Release|Win32 = GCC-Release|Win32
+		Clang-Release|Win32 = Clang-Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.GCC|Win32.ActiveCfg = GCC|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.GCC|Win32.Build.0 = GCC|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.Clang|Win32.ActiveCfg = Clang|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.Clang|Win32.Build.0 = Clang|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.GCC-Release|Win32.ActiveCfg = GCC-Release|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.GCC-Release|Win32.Build.0 = GCC-Release|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.Clang-Release|Win32.ActiveCfg = Clang-Release|Win32
+		{8D4F172B-43E7-4981-A7C3-1B1A01F65BDB}.Clang-Release|Win32.Build.0 = Clang-Release|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.GCC|Win32.ActiveCfg = GCC|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.GCC|Win32.Build.0 = GCC|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.Clang|Win32.ActiveCfg = Clang|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.Clang|Win32.Build.0 = Clang|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.GCC-Release|Win32.ActiveCfg = GCC-Release|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.GCC-Release|Win32.Build.0 = GCC-Release|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.Clang-Release|Win32.ActiveCfg = Clang-Release|Win32
+		{D153E847-23E9-49A7-845E-570F18D1FA40}.Clang-Release|Win32.Build.0 = Clang-Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = TRUE
+	EndGlobalSection
+EndGlobal

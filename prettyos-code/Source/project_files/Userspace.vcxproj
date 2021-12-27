@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Clang-Release|Win32">
+      <Configuration>Clang-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Clang|Win32">
+      <Configuration>Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="GCC-Release|Win32">
+      <Configuration>GCC-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="GCC|Win32">
+      <Configuration>GCC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D153E847-23E9-49A7-845E-570F18D1FA40}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'">
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\user\user_tools;$(SolutionDir)\..\user\stdlibc</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\user</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'">
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\user\user_tools;$(SolutionDir)\..\user\stdlibc</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\user</SourcePath>
+    <NMakePreprocessorDefinitions>__clang__</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'">
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\user\user_tools;$(SolutionDir)\..\user\stdlibc</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..\user</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'">
+    <NMakeIncludeSearchPath>$(SolutionDir)\..\user\user_tools;$(SolutionDir)\..\user\stdlibc</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(SolutionDir)\VCcompatibility.h</NMakeForcedIncludes>
+    <IncludePath />
+    <SourcePath>..</SourcePath>
+    <NMakePreprocessorDefinitions>__clang__</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GCC-Release|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Clang-Release|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GCC|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Clang|Win32'">
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\user\other_userprogs\makefile" />
+    <None Include="..\user\shell\makefile" />
+    <None Include="..\user\stdlibc\makefile" />
+    <None Include="..\user\user_tools\makefile" />
+    <None Include="..\user\user_tools\start.asm" />
+    <None Include="..\user\user_tools\user.ld" />
+    <None Include="..\user\vm86\apm.asm" />
+    <None Include="..\user\vm86\vidswtch.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\user\other_userprogs\arrow.c" />
+    <ClCompile Include="..\user\other_userprogs\browser.c" />
+    <ClCompile Include="..\user\other_userprogs\calc.c" />
+    <ClCompile Include="..\user\other_userprogs\devmgr.c" />
+    <ClCompile Include="..\user\other_userprogs\editor.cpp" />
+    <ClCompile Include="..\user\other_userprogs\ftp.c" />
+    <ClCompile Include="..\user\other_userprogs\hello.c" />
+    <ClCompile Include="..\user\other_userprogs\irc.c" />
+    <ClCompile Include="..\user\other_userprogs\music.c" />
+    <ClCompile Include="..\user\other_userprogs\piano.c" />
+    <ClCompile Include="..\user\other_userprogs\pong.c" />
+    <ClCompile Include="..\user\other_userprogs\pqeq.c" />
+    <ClCompile Include="..\user\other_userprogs\psort.c" />
+    <ClCompile Include="..\user\other_userprogs\readme.c" />
+    <ClCompile Include="..\user\other_userprogs\showdns.c" />
+    <ClCompile Include="..\user\other_userprogs\starwars.c" />
+    <ClCompile Include="..\user\other_userprogs\test.c" />
+    <ClCompile Include="..\user\other_userprogs\ttt.c" />
+    <ClCompile Include="..\user\other_userprogs\udprecv.c" />
+    <ClCompile Include="..\user\other_userprogs\udpsend.c" />
+    <ClCompile Include="..\user\other_userprogs\webshell.c" />
+    <ClCompile Include="..\user\shell\shell.c" />
+    <ClCompile Include="..\user\stdlibc\assert.c" />
+    <ClCompile Include="..\user\stdlibc\ctype.c" />
+    <ClCompile Include="..\user\stdlibc\errno.c" />
+    <ClCompile Include="..\user\stdlibc\locale.c" />
+    <ClCompile Include="..\user\stdlibc\math.c" />
+    <ClCompile Include="..\user\stdlibc\setjmp.c" />
+    <ClCompile Include="..\user\stdlibc\signal.c" />
+    <ClCompile Include="..\user\stdlibc\stdio.c" />
+    <ClCompile Include="..\user\stdlibc\stdlib.c" />
+    <ClCompile Include="..\user\stdlibc\stdlib_sortsearch.c" />
+    <ClCompile Include="..\user\stdlibc\stdlib_strtonum.c" />
+    <ClCompile Include="..\user\stdlibc\string.c" />
+    <ClCompile Include="..\user\stdlibc\time.c" />
+    <ClCompile Include="..\user\user_tools\dns.c" />
+    <ClCompile Include="..\user\user_tools\dns_help.c" />
+    <ClCompile Include="..\user\user_tools\syscalls.c" />
+    <ClCompile Include="..\user\user_tools\userlib.c" />
+    <ClCompile Include="..\user\user_tools\userlib_cpp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\user\other_userprogs\pciVendProdList.h" />
+    <ClInclude Include="..\user\other_userprogs\pong.h" />
+    <ClInclude Include="..\user\stdlibc\assert.h" />
+    <ClInclude Include="..\user\stdlibc\ctype.h" />
+    <ClInclude Include="..\user\stdlibc\errno.h" />
+    <ClInclude Include="..\user\stdlibc\float.h" />
+    <ClInclude Include="..\user\stdlibc\iso646.h" />
+    <ClInclude Include="..\user\stdlibc\limits.h" />
+    <ClInclude Include="..\user\stdlibc\locale.h" />
+    <ClInclude Include="..\user\stdlibc\math.h" />
+    <ClInclude Include="..\user\stdlibc\setjmp.h" />
+    <ClInclude Include="..\user\stdlibc\signal.h" />
+    <ClInclude Include="..\user\stdlibc\stdarg.h" />
+    <ClInclude Include="..\user\stdlibc\stdbool.h" />
+    <ClInclude Include="..\user\stdlibc\stddef.h" />
+    <ClInclude Include="..\user\stdlibc\stdint.h" />
+    <ClInclude Include="..\user\stdlibc\stdio.h" />
+    <ClInclude Include="..\user\stdlibc\stdlib.h" />
+    <ClInclude Include="..\user\stdlibc\string.h" />
+    <ClInclude Include="..\user\stdlibc\time.h" />
+    <ClInclude Include="..\user\user_tools\dns.h" />
+    <ClInclude Include="..\user\user_tools\dns_help.h" />
+    <ClInclude Include="..\user\user_tools\types.h" />
+    <ClInclude Include="..\user\user_tools\userlib.h" />
+    <ClInclude Include="..\user\user_tools\userlib.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

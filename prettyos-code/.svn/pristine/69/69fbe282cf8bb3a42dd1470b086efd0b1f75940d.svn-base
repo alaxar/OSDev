@@ -1,0 +1,52 @@
+Physical addresses:
+Start address | End address | Contains    | Annotations
+--------------|-------------|-------------|--------------------------------------------------------------
+0x0           | 0x400       | IVT         | Interrupt Vector Table, needed in Real Mode and VM86
+0x400         | 0x500       | BDA         | Bios Data Area: http://www.lowlevel.eu/wiki/BIOS_Data_Area
+              |             |             |
+0x1000        | 0x3400      | DMA Buffer  | Buffer for ISA-DMA
+0x3400        | 0x4000      | VM86 data   | VM86 data
+              |             |             |
+0x100000      | ~~~~        | Kernel      | Position of kernel executable
+~~~~          | 0x480000    | Kernelstack | Kernel Stack during syscall (only with sysenter)
+~~~~          | 0x600000    | Kernelstack | Kernel Stack
+0x600000      | 0xC00000    | Placement   | Contains placement-allocated memory
+
+
+Virtual addresses - Kernel:
+Start address | End address | Contains    | Annotations
+--------------|-------------|-------------|--------------------------------------------------------------
+0x0           | 0x400       | IVT         | Interrupt Vector Table, needed in Real Mode and VM86
+0x400         | 0x500       | BDA         | Bios Data Area: http://www.lowlevel.eu/wiki/BIOS_Data_Area
+              |             |             |
+0x1000        | 0x3400      | DMA Buffer  | Buffer for ISA-DMA
+0x3400        | 0x4000      | VM86 data   | VM86 data
+0x4000        | 0x5000      | VM86 code   | Executable VM86 code
+0x5000        | 0x6000      | VM86 stack  | VM86 stack
+              |             |             |
+0x100000      | ~~~~        | Kernel      | Position of kernel executable
+~~~~          | 0x480000    | Kernelstack | Kernel Stack during syscall (only with sysenter)
+~~~~          | 0x600000    | Kernelstack | Kernel Stack
+0x600000      | 0xC00000    | Placement   | Contains placement-allocated memory
+              |             |             |
+0x1400000     | 0xBF000000  | User        | User PD. Visible during syscalls
+              |             |             |
+0xC0000000    | 0xE0000000  | MMIO        | Memory for MMIO of Devices
+0xE0000000    | 0xFFFFFFFF  | Kernel Data | Where the kernel's private data is stored
+
+
+=========================================================================================================
+
+Virtual addresses - User:
+Start address | End address | Contains    | Annotations
+--------------|-------------|-------------|--------------------------------------------------------------
+0x1400000     | ~~~~        | Userprog    | Position of the user programs executable
+~~~~          | 0x1500000   | Stack       | User stack
+0x1500000     | 0x1510000   | Data Buffer | Used to give parameters from kernel to new user program
+0x1510000     | 0xBF000000  | Heap        | User heap
+
+
+=========================================================================================================
+
+Explanation:
+~~~~: Floating borders between two memory areas

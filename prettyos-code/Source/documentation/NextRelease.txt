@@ -1,0 +1,41 @@
+﻿Neue Features:
+(-) Sysenter/Sysexit
+(-) USB-Isochronous-Transfer
+     -  UHCI
+     -  OHCI
+    (√) EHCI
+     -  xHCI
+(√) USB-Interrupt-Transfer
+     -  UHCI
+     √  OHCI
+    (√) EHCI
+     -  xHCI
+(√) Zusätzliche USB-Geräteklassen
+     √  USB HID
+         √  USB-Mäuse
+         √  USB-Tastaturen
+     √  USB-Floppy (UFI)
+    (√) USB-Video
+(-) IPv6
+ -  AHCI/SATA-Festplattentreiber
+ -  Scrollen in Konsolen
+ -  VGA-Grafikmodi
+ -  Freie Textmoduswahl (VBE-Text, VGA-Text oder Konsole im Grafikmodus)
+ -  VBE- und VGA-Grafik im Userbereich
+ -  ACPI-Herunterfahren
+(√) Neues Log-System
+ -  Sound
+     -  HD-Audio
+    (-) AC97
+     -  SB16
+ -  Mehrkernprozessor-Unterstützung
+
+Verbesserungen:
+(-) Ausgabecode von Kernel in Shell/Userspace verlagern
+ √  Lesen/Schreiben größerer Blöcke
+(√) Neuentwickeltes, flexibleres Paging-Modul
+ -  Erkennung von Diskettenwechseln
+ √  APM standardmäßig aktiviert
+ √  Unterstützung für Prüfsummenabladung
+
+Entfernte Funktionen:

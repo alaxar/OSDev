@@ -1,2 +1,3 @@
 floppya: 1_44=os-image, status=inserted
 boot: a
+#display_library: wx, options="gui_debug"

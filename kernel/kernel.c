@@ -2,32 +2,26 @@
 #include "../drivers/screen.h"
 #include <float.h>
 #include <cpuid.h>
-#include "idt.h"
+#include "../include/conversion.h"
+#include "../drivers/keyboard.h"
 
-extern void interrupt_handler();
+extern void loadIDT(void);
+// extern unsigned char address_of_initrd;
 int main() {
-    int image[5][5] = {
-        {0, 1, 1, 1, 0},
-        {1, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1},
-        {1, 0, 0, 0, 1},
-    };
-    // clear_screen();
-    // printf("Alazar demessie\n", -1, -1, 0xff);
-    unsigned char* VGA = (unsigned char*)0xa0000;
-    for(int rows = 0; rows < 5; rows++) {
-        for(int cols = 0; cols < 5; cols++) {
-            if(image[rows][cols] == 1) {
-                plot_pixel(rows, cols, 0x44, VGA);
-            } else {
-                plot_pixel(rows, cols, 0xff, VGA);
-
-            }
-        }
-    }
-    // InitializationIDT(1, 0, interrupt_handler);
-    // printf("Kernel", -1, -1);
-
+    idt_install();
+    isrs_install();
+    irq_install();
+    clear_screen();
+    keyboard_install();
+    terminal_init();
+    // printf(&address_of_initrd+8, -1, -1);
+    // int x = string_compare("alazar", "alazar");
+    // printf(itoa(x), -1, -1);
+    // if(x) {
+    //     printf("matched", -1, -1);
+    // } else {
+    //     printf("not matched", -1, -1);
+    // }
+   __asm__("sti");
     while(1);
 }

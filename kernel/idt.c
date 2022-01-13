@@ -1,51 +1,65 @@
-#include "idt.h"
-#include "../drivers/screen.h"
-extern uint32_t isr1;
-struct InterruptDescriptorTable _idt[256];
-struct IDTR idtr;
+/* bkerndev - Bran's Kernel Development Tutorial
+*  By:   Brandon F. (friesenb@gmail.com)
+*  Desc: Interrupt Descriptor Table management
+*
 
-void loadIDT() {
-    idtr.limit = 256*(sizeof(struct InterruptDescriptorTable)) - 1;
-    idtr.base = _idt;
 
-    struct IDTR *IDTRPtr = &idtr;
+/* Defines an IDT entry */
+#include "../include/system.h"
+struct idt_entry
+{
+    unsigned short base_lo;
+    unsigned short sel;
+    unsigned char always0;
+    unsigned char flags;
+    unsigned short base_hi;
+} __attribute__((packed));
 
-    __asm__("LIDT (%0) ": : "p" (IDTRPtr));
-    __asm__("sti");
+struct idt_ptr
+{
+    unsigned short limit;
+    unsigned int base;
+} __attribute__((packed));
+
+/* Declare an IDT of 256 entries. Although we will only use the
+*  first 32 entries in this tutorial, the rest exists as a bit
+*  of a trap. If any undefined IDT entry is hit, it normally
+*  will cause an "Unhandled Interrupt" exception. Any descriptor
+*  for which the 'presence' bit is cleared (0) will generate an
+*  "Unhandled Interrupt" exception */
+struct idt_entry idt[256];
+struct idt_ptr idtp;
+
+/* This exists in 'start.asm', and is used to load our IDT */
+extern void idt_load();
+
+/* Use this function to set an entry in the IDT. Alot simpler
+*  than twiddling with the GDT ;) */
+void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags)
+{
+    /* The interrupt routine's base address */
+    idt[num].base_lo = (base & 0xFFFF);
+    idt[num].base_hi = (base >> 16) & 0xFFFF;
+
+    /* The segment or 'selector' that this IDT entry will use
+    *  is set here, along with any access flags */
+    idt[num].sel = sel;
+    idt[num].always0 = 0;
+    idt[num].flags = flags;
 }
 
-void InitializationIDT(int number, int dpl, uint32_t handler) {
-    uint16_t selector;
-    uint16_t mode_setting;
+/* Installs the IDT */
+void idt_install()
+{
+    /* Sets the special IDT pointer up, just like in 'gdt.c' */
+    idtp.limit = (sizeof (struct idt_entry) * 256) - 1;
+    idtp.base = idt;
 
-    // get the Code Segment Selector
-    __asm__("mov %%cs, %0" : "=g"(selector));
 
-    switch (dpl)
-    {
-    case 0:
-        mode_setting = KERNEL_MODE;
-        break;
-    case 3:
-        mode_setting = USER_MODE;
-        break;
-    default:
-        break;
-    }
-    _idt[number].offset_1 = (handler & 0xffff);
-    _idt[number].selector = selector;
-    _idt[number].type_attributes = mode_setting;
-    _idt[number].offset_2 = (handler >> 16);
+    /* Add any new ISRs to the IDT here using idt_set_gate */
 
-    // reprogram the PIC
-    port_byte_out(0x21, 0xfd);
-    port_byte_out(0xa1, 0xff);
-    loadIDT();
-}
 
-void interrupt_handler() {
-    print_char('F', -1, -1, 0);
-    port_byte_out(0x20, 0x20);
-    port_byte_out(0xa0, 0x20);
-    while(1);
+
+    /* Points the processor's internal register to the new IDT */
+    idt_load();
 }

@@ -7,7 +7,7 @@ disk_load:
 
     ; Now begin to read sectors
     mov ah, 0x02        ; begin to read sectors
-    mov al, 15
+    mov al, 50
     mov ch, 0
     mov dh, 0
     mov cl, 2
@@ -17,7 +17,7 @@ disk_load:
     jc disk_error
 
     ; check if the read sectors are equal to al value
-    cmp al, 15
+    cmp al, 50
     jne disk_error
 
     ; if success

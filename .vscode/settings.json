@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "low_level.h": "c"
+        "low_level.h": "c",
+        "remappic.h": "c",
+        "kernel_panic.h": "c",
+        "screen.h": "c",
+        "idt.h": "c",
+        "conversion.h": "c",
+        "keyboard.h": "c",
+        "system.h": "c",
+        "cstdio": "c",
+        "strings.h": "c"
     }
 }

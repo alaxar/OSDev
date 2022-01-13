@@ -2,6 +2,20 @@
 #include "../kernel/low_level.h"
 #include "../include/types.h"
 
+void enable_cursor(uint8_t cursor_start, uint8_t cursor_end)
+{
+    port_byte_out(0x3d4, 0x0a);
+    port_byte_out(0x3d5, (port_byte_in(0x3d5) & 0xC0) | cursor_start);
+
+    port_byte_out(0x3d4, 0x0b);
+    port_byte_out(0x3d5, (port_byte_in(0x3d5) & 0xE0) | cursor_end);
+}
+
+void disable_cursor() {
+    port_byte_out(0x3d4, 0x0A);
+    port_byte_out(0x3d5, 0x20);
+}
+
 void printf(char *string, int col, int row) {
     if(col >= 0 && row >= 0)
         set_cursor(get_screen_offset(col, row));
@@ -11,7 +25,26 @@ void printf(char *string, int col, int row) {
     }
 }
 
+void print_hex(int decimal) {
+    int remainder = 0, i = count_digit(decimal); 
+    char *hexa_decimal;
+    while(decimal != 0) {
+        remainder = decimal % 16;
+        if(remainder >= 10) {
+            hexa_decimal[i] = remainder + 55;
+            i--;
+        } else {
+            hexa_decimal[i] = remainder + 48;
+            i--;
+        }
+        if(decimal == 0) {
+            hexa_decimal[i-1] = '\0';
+        }
+        decimal /= 16;
+    }
 
+    printf(hexa_decimal, -1, -1);
+}
 void print_char(char character, int col, int row, char attribute_byte) {
     unsigned char *vidmem = (unsigned char*)VIDEO_MEMORY;
     if(!attribute_byte)
@@ -34,6 +67,10 @@ void print_char(char character, int col, int row, char attribute_byte) {
         int rows  = offset / (2*MAX_COLS);
         offset = get_screen_offset(79, rows);
         // otherwise write the character
+    } else if(character == '\b') {
+        // handling backspace
+        // 320 * 200 (x, y)
+        set_cursor(get_cursor() - 1);
     } else {
         vidmem[offset] = character;
         vidmem[offset+1] = attribute_byte;
@@ -41,7 +78,7 @@ void print_char(char character, int col, int row, char attribute_byte) {
 
     offset+=2;
 
-  //  offset = handle_scrolling(offset);
+   offset = handling_scrolling(offset);
 
    set_cursor(offset);
 }
@@ -49,12 +86,6 @@ void print_char(char character, int col, int row, char attribute_byte) {
 
 int get_screen_offset(int col, int row) {
     int offset = (row * MAX_COLS + col) * 2;
-    // port_byte_out(REG_SCREEN_CTRL, 14);
-    // port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset >> 8));
-    // port_byte_out(REG_SCREEN_CTRL, 15);
-
-//    int cursor_offset = cursor_offset - (2*MAX_COLS);
-
     return offset;
 }
 
@@ -81,8 +112,8 @@ void clear_screen() {
     int cols = 0;
 
 
-    for(rows = 0; rows < MAX_ROWS; rows++) {
-        for(cols = 0; cols < MAX_COLS; cols++) {
+    for(rows = 0; rows < 80; rows++) {
+        for(cols = 0; cols < 25; cols++) {
             print_char(' ', rows, cols, WHITE_ON_BLACK);
         }
     }

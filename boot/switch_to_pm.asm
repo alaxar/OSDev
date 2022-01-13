@@ -6,6 +6,7 @@ switch_to_pm:
 
     lgdt[gdt_descriptor]        ; load our global descirptor table, which defines the protecte mode segments
 
+    ; setting the bit in cr0 makes protected mode
     mov eax, cr0
     or eax, 0x1
     mov cr0, eax

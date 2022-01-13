@@ -2,6 +2,5 @@
 [extern main]
 
 call main
-%include "boot/interrupts.asm"
-
+%include "boot/interrups.asm"
 jmp $

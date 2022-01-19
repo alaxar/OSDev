@@ -122,5 +122,6 @@ void clear_screen() {
 }
 
 void plot_pixel(int y, int x, byte color, unsigned char* VGA) {
-    VGA[(y<<8) + (y<<6) + x] = color;
+    // VGA[(y<<8) + (y<<6) + x] = color;
+    VGA[y * 800 + x] = color;
 }

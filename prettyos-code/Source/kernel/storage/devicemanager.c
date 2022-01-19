@@ -1,6 +1,6 @@
 /*
 *  license and disclaimer for the use of this source code as per statement below
-*  Lizenz und Haftungsausschluss für die Verwendung dieses Sourcecodes siehe unten
+*  Lizenz und Haftungsausschluss fï¿½r die Verwendung dieses Sourcecodes siehe unten
 */
 
 #include "devicemanager.h"

@@ -7,8 +7,8 @@ CFLAGS = -c	# compiler flags
 LDFLAGS = -T kernel.ld#text 0x1000# for the linker
 NFLAGS = -f elf32		# for nasm assembler
 
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c include/*.c tools/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h include/*.h tools/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c include/*.c tools/*.c fonts/*.c drivers/vesa_vbe/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h include/*.h tools/*.h fonts/*.h drivers/vesa_vbe/*.h)
 
 OBJ = $(C_SOURCES:.c=.o)
 
@@ -17,7 +17,7 @@ all: os-image run
 run: all
 	echo 'c' | bochs -f bochsrc.bxrc
 
-os-image: boot/bootloader.bin kernel.bin #boot/initrd/initrd.tar
+os-image: boot/bootloader.bin kernel.bin # Untitled.bmp
 	 cat $^ > $@
 
 kernel.bin: kernel/kernel_entry.o ${OBJ}
